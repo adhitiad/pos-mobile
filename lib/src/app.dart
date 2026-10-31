@@ -11,7 +11,7 @@ class PosApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final router = GoRouter(
-      initialRoute: '/',
+      initialLocation: '/',
       routes: [
         GoRoute(path: '/', builder: (context, state) => const HomeScreen()),
       ],
