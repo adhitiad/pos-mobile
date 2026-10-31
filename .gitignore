@@ -1,0 +1,32 @@
+# Dart / Flutter
+.lib/
+**/*.g.dart
+**/*.freezed.dart
+**/.dart_tool/
+**/build/
+**/.flutter-plugins
+**/.flutter-plugins-dependencies
+android/.gradle/
+android/app/build/
+android/app/key.properties
+android/key.properties
+ios/.symlinks/
+ios/Flutter/app.flx
+ios/Flutter/Generated.xcconfig
+ios/Flutter/app.xcconfig
+ios/Flutter/Generated.xcconfig
+ios/Pods/
+ios/Runner/GeneratedPluginRegistrant.*
+web/build/
+windows/build/
+linux/build/
+macos/build/
+*.pub.lock
+.dart_tool/package_config.json
+.scratchwork/
+
+# OS
+.DS_Store
+Thumbs.db
+.env
+*.log

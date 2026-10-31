@@ -1,0 +1,43 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "mcp": {
+    "timeout": {
+      "startup": 30000,
+      "catalog": 30000,
+      "execution": 65000
+    },
+    "servers": {
+      "pos-mobile": {
+        "type": "local",
+        "command": ["bun", "run", "E:/code/pos/mcp/server-mobile.ts"]
+      },
+      "pos-backend": {
+        "type": "local",
+        "command": ["bun", "run", "E:/code/pos/mcp/server-backend.ts"]
+      },
+      "sequential-thinking": {
+        "type": "local",
+        "command": ["bunx", "@modelcontextprotocol/server-sequential-thinking"]
+      }
+    }
+  },
+  "references": {
+    "pos-backend": {
+      "path": "../pos",
+      "description": "Backend POS dan kontrak API (docs/API.md, skema Prisma) yang dikonsumsi aplikasi Flutter ini."
+    }
+  },
+  "instructions": [
+    "Dua MCP lokal membaca repo: 'pos-mobile' → repo Flutter ini (docs/**, lib/**, test/, .agents/, AGENTS.md, pubspec.yaml); 'pos-backend' → kode & skema backend POS + kontrak API (docs/API.md).",
+    "Alur wajib: baca AGENTS.md untuk konvensi Flutter, lalu pos-mobile_list_files / pos-mobile_read_file / pos-mobile_search untuk kode aplikasi, dan pos-backend_repo_search / pos-backend_repo_read_file untuk memastikan kontrak API di backend. Jangan menebak path: cari dulu.",
+    ".agents/rules/01-flutter-dart.md",
+    ".agents/rules/02-keterbacaan.md",
+    ".agents/rules/03-komentar.md",
+    ".agents/rules/04-batas-file.md",
+    ".agents/rules/05-api-keamanan.md",
+    ".agents/rules/06-flutter-android.md",
+    ".agents/rules/07-ui-android.md",
+    ".agents/rules/08-verifikasi.md"
+  ],
+  "skills": ["~/.gemini/config/skills"]
+}
