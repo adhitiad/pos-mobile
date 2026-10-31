@@ -1,19 +1,38 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:pos_mobile/src/screens/kasir_screen.dart';
+import 'package:pos_mobile/src/screens/login_screen.dart';
+import 'package:pos_mobile/src/services/session_storage_impl.dart';
 
 /// Root widget aplikasi POS mobile.
 ///
 /// Routing didefinisikan di sini melalui [GoRouter]. Setiap rute memetakan ke
 /// layar di `lib/src/screens/`.
 class PosApp extends StatelessWidget {
-  const PosApp({super.key});
+  PosApp({super.key}) : _storage = FlutterSecureSessionStorage();
+
+  final FlutterSecureSessionStorage _storage;
 
   @override
   Widget build(BuildContext context) {
     final router = GoRouter(
-      initialLocation: '/',
+      initialLocation: '/login',
+      redirect: (context, state) async {
+        final loggedIn = await _storage.readToken() != null;
+        final loginRoute = state.matchedLocation == '/login';
+        if (!loggedIn && !loginRoute) return '/login';
+        if (loggedIn && loginRoute) return '/kasir';
+        return null;
+      },
       routes: [
-        GoRoute(path: '/', builder: (context, state) => const HomeScreen()),
+        GoRoute(
+          path: '/login',
+          builder: (context, state) => const LoginScreen(),
+        ),
+        GoRoute(
+          path: '/kasir',
+          builder: (context, state) => const KasirScreen(),
+        ),
       ],
     );
 
@@ -24,18 +43,6 @@ class PosApp extends StatelessWidget {
         useMaterial3: true,
         colorSchemeSeed: const Color(0xFF0F62FE),
       ),
-    );
-  }
-}
-
-/// Layar beranda sementara. Ganti dengan layar kasir aktual sesuai API backend.
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(child: Text('POS Mobile — siap dikembangkan')),
     );
   }
 }

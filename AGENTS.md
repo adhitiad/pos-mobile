@@ -7,21 +7,20 @@ Expo lagi). Konsumsi REST API backend melalui `/api/v1*`, menyimpan token sesi d
 
 ## Struktur direktori
 
-| Direktori                              | Isi                                            |
-| -------------------------------------- | ---------------------------------------------- |
-| `lib/src/main.dart`                    | Titik masuk aplikasi.                          |
-| `lib/src/app.dart`                     | Root widget + routing (GoRouter).              |
-| `lib/src/models/`                      | Model data (DTO) respons API.                  |
-| `lib/src/services/`                    | Klien API, penyimpanan aman, deteksi koneksi.  |
-| `lib/src/screens/`                     | Layar aplikasi.                                |
-| `lib/src/widgets/`                     | Widget yang dibagikan.                         |
-| `lib/src/utils/`                       | Utilitas umum.                                 |
-| `test/`                                | Tes unit dan widget.                           |
-| `android/`, `ios/`, `web/`, `windows/` | Wrapper native (di-generate `flutter create`). |
+| Direktori                              | Isi                                           |
+| -------------------------------------- | --------------------------------------------- |
+| `lib/src/main.dart`                    | Titik masuk aplikasi.                         |
+| `lib/src/app.dart`                     | Root widget + routing (GoRouter).             |
+| `lib/src/models/`                      | Model data (DTO) respons API.                 |
+| `lib/src/services/`                    | Klien API, penyimpanan aman, deteksi koneksi. |
+| `lib/src/screens/`                     | Layar aplikasi.                               |
+| `lib/src/widgets/`                     | Widget yang dibagikan.                        |
+| `lib/src/utils/`                       | Utilitas umum.                                |
+| `test/`                                | Tes unit dan widget.                          |
+| `android/`, `ios/`, `web/`, `windows/` | Wrapper native (hasil `flutter create`).      |
 
-> `android/` dan `ios/` **belum ada** karena Flutter SDK tidak terpasang di mesin
-> ini. Jalankan `flutter create .` setelah Flutter SDK tersedia untuk
-> men-generate wrapper native. Direktori `lib/` dan `pubspec.yaml` sudah siap.
+> `android/` dan `ios/` sudah tersedia (hasil `flutter create`). Untuk rebuild
+> wrapper native, jalankan `flutter create .`.
 
 ## Perintah — Flutter / Dart saja
 
